@@ -644,3 +644,8 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Enhanced typography */
+:root {
+  --font-display: 'Inter', sans-serif;
+}
