@@ -853,3 +853,8 @@ body {
 }
 .badge-success { background: var(--success); color: #000; }
 .badge-error { background: var(--error); }
+
+input:focus, button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(123, 63, 228, 0.3);
+}
