@@ -1056,3 +1056,9 @@ input:focus, button:focus {
 .transition-slow { transition: all 0.5s ease; }
 .duration-200 { transition-duration: 200ms; }
 .duration-300 { transition-duration: 300ms; }
+
+.scale-95 { transform: scale(0.95); }
+.scale-100 { transform: scale(1); }
+.scale-105 { transform: scale(1.05); }
+.translate-y-1 { transform: translateY(0.25rem); }
+.-translate-y-1 { transform: translateY(-0.25rem); }
