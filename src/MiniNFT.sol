@@ -6,13 +6,14 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/Pausable.sol";
 
 /**
  * @title MiniNFT
  * @dev A simple NFT collection with 505 unique NFTs that can be minted randomly
  * @notice Mint fee is 0.00001 ETH per NFT
  */
-contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, ReentrancyGuard {
+contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, ReentrancyGuard, Pausable {
     // Constants
     uint256 public constant MAX_SUPPLY = 505;
     uint256 public constant MINT_PRICE = 0.00001 ether;
@@ -28,6 +29,7 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
     event NFTMinted(address indexed minter, uint256 indexed tokenId);
     event BaseURIUpdated(string newBaseURI);
     event FundsWithdrawn(address indexed owner, uint256 amount);
+    event NFTBurned(address indexed burner, uint256 indexed tokenId);
     event BulkMintExecuted(address indexed minter, uint256 quantity, uint256 totalCost);
     event BulkTransferExecuted(address indexed from, address indexed to, uint256[] tokenIds);
     event BulkMetadataUpdated(uint256[] tokenIds, string[] newURIs);
@@ -48,7 +50,7 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
      * @dev Mint a random NFT from the collection
      * @notice Requires payment of 0.00001 ETH
      */
-    function mint() external payable nonReentrant {
+    function mint() external payable nonReentrant whenNotPaused {
         require(_availableTokenIds.length > 0, "All NFTs have been minted");
         require(msg.value >= MINT_PRICE, "Insufficient payment");
 
@@ -75,7 +77,7 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
      * @dev Mint multiple random NFTs at once
      * @param quantity Number of NFTs to mint
      */
-    function mintBatch(uint256 quantity) external payable nonReentrant {
+    function mintBatch(uint256 quantity) external payable nonReentrant whenNotPaused {
         require(quantity > 0, "Quantity must be greater than 0");
         require(quantity <= 10, "Max 10 NFTs per batch");
         require(_availableTokenIds.length >= quantity, "Not enough NFTs available");
@@ -143,6 +145,29 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
         require(success, "Withdrawal failed");
 
         emit FundsWithdrawn(owner(), balance);
+    }
+
+    /**
+     * @dev Pause minting functions (emergency stop)
+     */
+    function pause() external onlyOwner {
+        _pause();
+    }
+
+    /**
+     * @dev Unpause minting functions
+     */
+    function unpause() external onlyOwner {
+        _unpause();
+    }
+
+    /**
+     * @dev Burn an NFT (only owner can burn their own NFT)
+     */
+    function burn(uint256 tokenId) external {
+        require(ownerOf(tokenId) == msg.sender, "Not token owner");
+        _burn(tokenId);
+        emit NFTBurned(msg.sender, tokenId);
     }
 
     /**
@@ -230,6 +255,7 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
         payable
         onlyOwner
         nonReentrant
+        whenNotPaused
     {
         uint256 totalMints = recipients.length;
         require(totalMints > 0 && totalMints <= 50, "Invalid mint count");

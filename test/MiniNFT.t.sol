@@ -82,6 +82,98 @@ contract MiniNFTTest is Test {
     }
 
     /*//////////////////////////////////////////////////////////////
+                           PAUSABLE TESTS
+    //////////////////////////////////////////////////////////////*/
+
+    function testPause() public {
+        nft.pause();
+        assertTrue(nft.paused());
+    }
+
+    function testUnpause() public {
+        nft.pause();
+        assertTrue(nft.paused());
+
+        nft.unpause();
+        assertFalse(nft.paused());
+    }
+
+    function testOnlyOwnerCanPause() public {
+        vm.prank(user1);
+        vm.expectRevert();
+        nft.pause();
+    }
+
+    function testOnlyOwnerCanUnpause() public {
+        nft.pause();
+
+        vm.prank(user1);
+        vm.expectRevert();
+        nft.unpause();
+    }
+
+    function testMintWhenPaused() public {
+        nft.pause();
+
+        vm.prank(user1);
+        vm.expectRevert("Pausable: paused");
+        nft.mint{value: 0.00001 ether}();
+    }
+
+    function testMintBatchWhenPaused() public {
+        nft.pause();
+
+        vm.prank(user1);
+        vm.expectRevert("Pausable: paused");
+        nft.mintBatch{value: 0.00005 ether}(5);
+    }
+
+    function testBulkMintWithURIsWhenPaused() public {
+        nft.pause();
+
+        address[] memory recipients = new address[](1);
+        recipients[0] = user1;
+
+        string[] memory customURIs = new string[](1);
+        customURIs[0] = "ipfs://custom/";
+
+        vm.expectRevert("Pausable: paused");
+        nft.bulkMintWithURIs{value: 0.00001 ether}(recipients, customURIs);
+    }
+
+    /*//////////////////////////////////////////////////////////////
+                           BURN TESTS
+    //////////////////////////////////////////////////////////////*/
+
+    function testBurn() public {
+        vm.prank(user1);
+        nft.mint{value: 0.00001 ether}();
+
+        vm.prank(user1);
+        vm.expectEmit(true, false, false, true);
+        emit MiniNFT.NFTBurned(user1, 1);
+        nft.burn(1);
+
+        assertEq(nft.totalSupply(), 0);
+        assertEq(nft.balanceOf(user1), 0);
+    }
+
+    function testBurnNotOwner() public {
+        vm.prank(user1);
+        nft.mint{value: 0.00001 ether}();
+
+        vm.prank(user2);
+        vm.expectRevert("Not token owner");
+        nft.burn(1);
+    }
+
+    function testBurnNonExistentToken() public {
+        vm.prank(user1);
+        vm.expectRevert("Not token owner");
+        nft.burn(999);
+    }
+
+    /*//////////////////////////////////////////////////////////////
                            BULK OPERATIONS TESTS
     //////////////////////////////////////////////////////////////*/
 
