@@ -1321,3 +1321,21 @@ body {
 .page-loader-icon {
   font-size: 2rem;
 }
+
+/* Copy button */
+.copy-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  color: var(--text-primary);
+  border-color: rgba(123, 63, 228, 0.6);
+  background: rgba(123, 63, 228, 0.15);
+}
