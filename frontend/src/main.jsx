@@ -8,6 +8,7 @@ import { getDefaultConfig, RainbowKitProvider, darkTheme } from '@rainbow-me/rai
 import { WagmiProvider } from 'wagmi';
 import { base } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ToastProvider } from './components';
 
 const config = getDefaultConfig({
   appName: 'MiniNFT',
@@ -27,7 +28,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           accentColorForeground: 'white',
           borderRadius: 'medium',
         })}>
-          <App />
+          <ToastProvider>
+            <App />
+          </ToastProvider>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
