@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mininft-dev:
+    build: .
+    container_name: mininft-dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/frontend/node_modules
+    working_dir: /app
+    ports:
+      - "5173:5173"  # Vite dev server
+    environment:
+      - NODE_ENV=development
+    command: sleep infinity
+    stdin_open: true
+    tty: true
+
+  # Optional: Add a service for running tests in isolation
+  mininft-test:
+    build: .
+    container_name: mininft-test
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: make test
+    profiles:
+      - test
