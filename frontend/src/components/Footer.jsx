@@ -1,4 +1,5 @@
 import { CONTRACT_ADDRESS } from '../contract';
+import { CopyButton, Tooltip } from './index';
 
 function Footer() {
   return (
@@ -17,6 +18,12 @@ function Footer() {
           >
             📄 Contract
           </a>
+          <Tooltip content={CONTRACT_ADDRESS} position="top">
+            <span className="footer-contract">
+              {CONTRACT_ADDRESS.slice(0, 6)}...{CONTRACT_ADDRESS.slice(-4)}
+            </span>
+          </Tooltip>
+          <CopyButton text={CONTRACT_ADDRESS} label="Copy Address" copiedLabel="Copied" />
           <a 
             href="https://opensea.io/collection/mininft"
             target="_blank"
@@ -25,7 +32,7 @@ function Footer() {
             🖼️ OpenSea
           </a>
           <a 
-            href="https://github.com/phessophissy/miniNFT"
+            href="https://github.com/AdekunleBamz/miniNFT"
             target="_blank"
             rel="noopener noreferrer"
           >
