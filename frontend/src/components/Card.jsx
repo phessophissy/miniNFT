@@ -10,6 +10,13 @@ function Card({ children, className = '', variant = 'default', hover = true, onC
     <div 
       className={`card ${variants[variant]} ${hover ? 'card-hover' : ''} ${className}`}
       onClick={onClick}
+      onKeyDown={(event) => {
+        if (!onClick) return;
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onClick(event);
+        }
+      }}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
     >
