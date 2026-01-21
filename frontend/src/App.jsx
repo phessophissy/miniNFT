@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Header, Stats, MintCard, Gallery, Features, Footer, useToast } from './components';
+import { Header, Stats, MintCard, Gallery, Features, Footer, ProgressBar, useToast } from './components';
 import { useNFTContract } from './hooks';
 import { MAX_SUPPLY } from './contract';
 
@@ -72,12 +72,7 @@ function App() {
         />
 
         {/* Progress bar */}
-        <div className="progress-container">
-          <div className="progress-bar">
-            <div className="progress-fill" style={{ width: `${progress}%` }}></div>
-          </div>
-          <div className="progress-text">{progress.toFixed(1)}% minted</div>
-        </div>
+        <ProgressBar progress={progress} minted={minted} total={MAX_SUPPLY} />
 
         {/* Mint card */}
         <MintCard
