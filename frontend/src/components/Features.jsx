@@ -1,3 +1,5 @@
+import Card from './Card';
+
 function Features() {
   const features = [
     {
@@ -37,11 +39,11 @@ function Features() {
       <h2 className="section-title">Why MiniNFT?</h2>
       <div className="features-grid">
         {features.map((feature, index) => (
-          <div key={index} className="feature-card">
+          <Card key={index} variant="glass" hover className="feature-card">
             <div className="feature-icon">{feature.icon}</div>
             <h3>{feature.title}</h3>
             <p>{feature.description}</p>
-          </div>
+          </Card>
         ))}
       </div>
     </div>
