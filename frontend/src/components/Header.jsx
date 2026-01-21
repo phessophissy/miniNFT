@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import Badge from './Badge';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,6 +14,7 @@ function Header() {
       <div className="logo">
         <span className="logo-icon">💎</span>
         <span className="logo-text">MiniNFT</span>
+        <Badge variant="info" size="small">Base Mainnet</Badge>
       </div>
       
       <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
