@@ -1085,6 +1085,10 @@ button:focus {
   box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.4);
 }
 
+button:active {
+  transform: translateY(2px);
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
