@@ -18,8 +18,11 @@ docs/
 # Node modules
 node_modules/
 
-# Scripts folder (contains minting scripts with wallet references)
-scripts/
+# Scripts folder - allow scripts but ignore sensitive wallet data
+# scripts/
+scripts/wallets.json
+scripts/*.key
+scripts/*.secret
 
 # Foundry script folder (deployment scripts)
 script/
