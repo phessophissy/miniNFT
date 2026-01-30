@@ -3,7 +3,7 @@ function RecentMints({ mints }) {
 
   return (
     <div className="recent-mints">
-      <h3>🎉 Your Recent Mints</h3>
+      <h3>🪵 Your Recent Mints</h3>
       <div className="recent-list">
         {mints.map((mint, index) => (
           <div key={index} className="recent-item">
@@ -13,7 +13,7 @@ function RecentMints({ mints }) {
                 <span className="recent-quantity">{mint.quantity} NFT{mint.quantity > 1 ? 's' : ''}</span>
               )}
             </div>
-            <a 
+            <a
               href={`https://basescan.org/tx/${mint.txHash}`}
               target="_blank"
               rel="noopener noreferrer"
