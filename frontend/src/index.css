@@ -1095,7 +1095,7 @@ button:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: var(--wood-grain);
   border-radius: 4px;
 }
 
