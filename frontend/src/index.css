@@ -1201,6 +1201,13 @@ button:focus {
   font-size: 1.125rem;
 }
 
+h1 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
 .text-xl {
   font-size: 1.25rem;
 }
