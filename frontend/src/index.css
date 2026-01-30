@@ -1797,3 +1797,18 @@ button:focus {
     inset 0 -1px 0 rgba(0, 0, 0, 0.25),
     0 6px 12px rgba(0, 0, 0, 0.4);
 }
+
+/* Amber Glow Effect */
+.amber-glow {
+  box-shadow:
+    0 0 10px rgba(218, 165, 32, 0.3),
+    0 0 20px rgba(218, 165, 32, 0.2),
+    0 0 30px rgba(218, 165, 32, 0.1);
+}
+
+.amber-glow:hover {
+  box-shadow:
+    0 0 15px rgba(218, 165, 32, 0.4),
+    0 0 30px rgba(218, 165, 32, 0.3),
+    0 0 45px rgba(218, 165, 32, 0.2);
+}
