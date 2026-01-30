@@ -5,17 +5,17 @@
 }
 
 :root {
-  --primary: #7b3fe4;
-  --primary-dark: #5c2eb3;
-  --primary-light: #9d6aef;
-  --secondary: #00d4ff;
-  --bg-dark: #0a0a0f;
-  --bg-card: rgba(20, 20, 30, 0.8);
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0b0;
-  --border-color: rgba(123, 63, 228, 0.3);
-  --success: #00ff88;
-  --error: #ff4757;
+  --primary: #8B4513;
+  --primary-dark: #5D2E0C;
+  --primary-light: #A0522D;
+  --secondary: #D2691E;
+  --bg-dark: #1a0f0a;
+  --bg-card: rgba(45, 30, 20, 0.9);
+  --text-primary: #F5DEB3;
+  --text-secondary: #DEB887;
+  --border-color: rgba(139, 69, 19, 0.4);
+  --success: #228B22;
+  --error: #8B0000;
 }
 
 body {
