@@ -5,9 +5,9 @@ function ProgressBar({ progress, minted, total }) {
         <span className="progress-label">Minting Progress</span>
         <span className="progress-count">{minted} / {total}</span>
       </div>
-      <div className="progress-bar">
-        <div 
-          className="progress-fill" 
+      <div className="progress-bar ring-growth">
+        <div
+          className="progress-fill"
           style={{ width: `${progress}%` }}
         >
           {progress >= 10 && (
@@ -16,8 +16,8 @@ function ProgressBar({ progress, minted, total }) {
         </div>
       </div>
       <div className="progress-text">
-        {progress < 100 
-          ? `${(100 - progress).toFixed(1)}% remaining` 
+        {progress < 100
+          ? `${(100 - progress).toFixed(1)}% remaining`
           : '🎉 Sold Out!'}
       </div>
     </div>
