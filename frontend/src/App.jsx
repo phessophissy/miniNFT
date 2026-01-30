@@ -51,12 +51,12 @@ function App() {
             Mint Your <span className="gradient-text">MiniNFT</span>
           </h1>
           <p className="subtitle">
-            A collection of 505 unique NFTs on Base Chain
+            A collection of 1005 unique NFTs on Base Chain
           </p>
         </div>
 
         {/* Stats */}
-        <Stats 
+        <Stats
           minted={minted}
           remaining={remaining}
           userBalance={userBalance}
@@ -91,7 +91,7 @@ function App() {
               {recentMints.map((mint, index) => (
                 <div key={index} className="recent-item">
                   <span>{mint.timestamp}</span>
-                  <a 
+                  <a
                     href={`https://basescan.org/tx/${mint.txHash}`}
                     target="_blank"
                     rel="noopener noreferrer"
