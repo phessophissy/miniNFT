@@ -37,7 +37,7 @@ function Gallery({ address, userBalance }) {
       <p className="gallery-count">You own {Number(userBalance)} MiniNFT{Number(userBalance) > 1 ? 's' : ''}</p>
       <div className="gallery-grid">
         {Array.from({ length: Number(userBalance) }, (_, i) => (
-          <div key={i} className="nft-card">
+          <div key={i} className="nft-card tree-sway" style={{ animationDelay: `${i * 0.1}s` }}>
             <div className="nft-placeholder">
               <span className="nft-icon">��</span>
               <span className="nft-number">#{i + 1}</span>
