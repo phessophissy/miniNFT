@@ -3,21 +3,21 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { parseEther } from 'viem';
 import { MININFT_ABI, CONTRACT_ADDRESS, MINT_PRICE } from '../contract';
 
-function MintCard({ 
-  isConnected, 
-  remaining, 
-  writeContract, 
-  isPending, 
-  isConfirming, 
-  isSuccess, 
-  hash, 
-  writeError 
+function MintCard({
+  isConnected,
+  remaining,
+  writeContract,
+  isPending,
+  isConfirming,
+  isSuccess,
+  hash,
+  writeError
 }) {
   const [mintQuantity, setMintQuantity] = useState(1);
 
   const handleMint = () => {
     const value = parseEther(MINT_PRICE) * BigInt(mintQuantity);
-    
+
     if (mintQuantity === 1) {
       writeContract({
         address: CONTRACT_ADDRESS,
@@ -37,9 +37,9 @@ function MintCard({
   };
 
   return (
-    <div className="mint-card" id="mint">
-      <h2 className="mint-title">Mint Your NFT</h2>
-      
+    <div className="mint-card warm-glow" id="mint">
+      <h2 className="mint-title">🪵 Mint Your NFT</h2>
+
       {!isConnected ? (
         <div className="connect-prompt">
           <p>Connect your wallet to mint</p>
@@ -53,7 +53,7 @@ function MintCard({
       ) : (
         <>
           <div className="quantity-selector">
-            <button 
+            <button
               className="quantity-btn"
               onClick={() => setMintQuantity(Math.max(1, mintQuantity - 1))}
               disabled={mintQuantity <= 1}
@@ -61,7 +61,7 @@ function MintCard({
               −
             </button>
             <span className="quantity-value">{mintQuantity}</span>
-            <button 
+            <button
               className="quantity-btn"
               onClick={() => setMintQuantity(Math.min(10, mintQuantity + 1, remaining))}
               disabled={mintQuantity >= 10 || mintQuantity >= remaining}
@@ -74,22 +74,22 @@ function MintCard({
             Total: <span className="price-value">{(parseFloat(MINT_PRICE) * mintQuantity).toFixed(5)} ETH</span>
           </div>
 
-          <button 
+          <button
             className="mint-btn"
             onClick={handleMint}
             disabled={isPending || isConfirming}
           >
-            {isPending ? '⏳ Confirm in Wallet...' : 
-             isConfirming ? '🔄 Minting...' : 
-             `🎨 Mint ${mintQuantity} NFT${mintQuantity > 1 ? 's' : ''}`}
+            {isPending ? '⏳ Confirm in Wallet...' :
+              isConfirming ? '🔄 Minting...' :
+                `🎨 Mint ${mintQuantity} NFT${mintQuantity > 1 ? 's' : ''}`}
           </button>
 
           {isSuccess && (
             <div className="success-message">
-              ✅ Successfully minted! 
-              <a 
+              ✅ Successfully minted!
+              <a
                 href={`https://basescan.org/tx/${hash}`}
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 View on BaseScan →
