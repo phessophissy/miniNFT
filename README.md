@@ -9,6 +9,9 @@ A collection of 1005 unique NFTs on Base Chain with micro-pricing and a warm woo
 - **1005 Unique NFTs** - Each NFT is uniquely generated
 - **Random Minting** - Get a random NFT from the collection
 - **Micro Price** - Only 0.000001 ETH per mint
+- **Wooden Theme** - Rich, organic design with dynamic animations
+- **Atmospheric Effects** - Smoke, embers, and falling leaves
+- **Interactive UI** - Carved wood buttons and glowing inputs
 - **Batch Minting** - Mint up to 10 NFTs at once
 - **5 Rarity Tiers** - Common, Uncommon, Rare, Epic, Legendary
 - **Base Chain** - Low gas fees on Ethereum L2
