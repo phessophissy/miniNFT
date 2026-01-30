@@ -1075,6 +1075,8 @@ button:focus {
 
 .badge-error {
   background: var(--error);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 input:focus,
