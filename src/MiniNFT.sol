@@ -19,10 +19,11 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
 
     // State variables
     string public baseTokenURI;
-    uint256 private _nextTokenId;
-
-    // Array to track available token IDs for random minting
-    uint256[] private _availableTokenIds;
+    
+    // Efficient randomization tracking
+    // map index -> tokenId (0 means value is index + 1)
+    mapping(uint256 => uint256) private _tokenMatrix;
+    uint256 private _tokensRemaining;
 
     // Events
     event NFTMinted(address indexed minter, uint256 indexed tokenId);
@@ -34,11 +35,8 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
         Ownable(msg.sender)
     {
         baseTokenURI = _baseTokenURI;
-
-        // Initialize available token IDs (1 to 1005)
-        for (uint256 i = 1; i <= MAX_SUPPLY; i++) {
-            _availableTokenIds.push(i);
-        }
+        _tokensRemaining = MAX_SUPPLY;
+        // No loop needed! Optimization for low gas deployment
     }
 
     /**
@@ -46,18 +44,10 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
      * @notice Requires payment of 0.000001 ETH
      */
     function mint() external payable nonReentrant {
-        require(_availableTokenIds.length > 0, "All NFTs have been minted");
+        require(_tokensRemaining > 0, "All NFTs have been minted");
         require(msg.value >= MINT_PRICE, "Insufficient payment");
 
-        // Get a random token ID from available tokens
-        uint256 randomIndex = _getRandomIndex();
-        uint256 tokenId = _availableTokenIds[randomIndex];
-
-        // Remove the token ID from available tokens
-        _removeTokenIdAtIndex(randomIndex);
-
-        // Mint the NFT
-        _safeMint(msg.sender, tokenId);
+        uint256 tokenId = _mintRandom(msg.sender);
 
         // Refund excess payment
         if (msg.value > MINT_PRICE) {
@@ -75,19 +65,17 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
     function mintBatch(uint256 quantity) external payable nonReentrant {
         require(quantity > 0, "Quantity must be greater than 0");
         require(quantity <= 10, "Max 10 NFTs per batch");
-        require(_availableTokenIds.length >= quantity, "Not enough NFTs available");
+        require(_tokensRemaining >= quantity, "Not enough NFTs available");
         require(msg.value >= MINT_PRICE * quantity, "Insufficient payment");
 
+        uint256 totalPrice = MINT_PRICE * quantity;
+
         for (uint256 i = 0; i < quantity; i++) {
-            uint256 randomIndex = _getRandomIndex();
-            uint256 tokenId = _availableTokenIds[randomIndex];
-            _removeTokenIdAtIndex(randomIndex);
-            _safeMint(msg.sender, tokenId);
+            uint256 tokenId = _mintRandom(msg.sender);
             emit NFTMinted(msg.sender, tokenId);
         }
 
         // Refund excess payment
-        uint256 totalPrice = MINT_PRICE * quantity;
         if (msg.value > totalPrice) {
             (bool success,) = payable(msg.sender).call{value: msg.value - totalPrice}("");
             require(success, "Refund failed");
@@ -95,30 +83,50 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
     }
 
     /**
+     * @dev Internal function to handle random minting logic efficiently
+     */
+    function _mintRandom(address to) private returns (uint256) {
+        // Get random index from remaining tokens
+        uint256 randIndex = _getRandomIndex();
+        
+        // Resolve the token ID at that index
+        // If matrix[randIndex] is 0, it means it hasn't been swapped yet, so it's randIndex + 1
+        uint256 tokenId = _tokenMatrix[randIndex];
+        if (tokenId == 0) {
+            tokenId = randIndex + 1;
+        }
+
+        // Reduce remaining count
+        _tokensRemaining--;
+
+        // Swap the last available token into the spot we just used
+        // This ensures the used spot effectively "disappears" and is replaced by the last one
+        if (_tokensRemaining != randIndex) {
+            uint256 lastVal = _tokenMatrix[_tokensRemaining];
+            if (lastVal == 0) {
+                lastVal = _tokensRemaining + 1;
+            }
+            _tokenMatrix[randIndex] = lastVal;
+        }
+
+        _safeMint(to, tokenId);
+        return tokenId;
+    }
+
+    /**
      * @dev Generate a pseudo-random index
      */
     function _getRandomIndex() private view returns (uint256) {
         return uint256(
-            keccak256(abi.encodePacked(block.timestamp, block.prevrandao, msg.sender, _availableTokenIds.length))
-        ) % _availableTokenIds.length;
-    }
-
-    /**
-     * @dev Remove a token ID from the available array by swapping with last element
-     */
-    function _removeTokenIdAtIndex(uint256 index) private {
-        uint256 lastIndex = _availableTokenIds.length - 1;
-        if (index != lastIndex) {
-            _availableTokenIds[index] = _availableTokenIds[lastIndex];
-        }
-        _availableTokenIds.pop();
+            keccak256(abi.encodePacked(block.timestamp, block.prevrandao, msg.sender, _tokensRemaining))
+        ) % _tokensRemaining;
     }
 
     /**
      * @dev Get the number of remaining NFTs available to mint
      */
     function remainingSupply() external view returns (uint256) {
-        return _availableTokenIds.length;
+        return _tokensRemaining;
     }
 
     /**
@@ -140,13 +148,6 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
         require(success, "Withdrawal failed");
 
         emit FundsWithdrawn(owner(), balance);
-    }
-
-    /**
-     * @dev Get all available token IDs
-     */
-    function getAvailableTokenIds() external view returns (uint256[] memory) {
-        return _availableTokenIds;
     }
 
     // Required overrides
