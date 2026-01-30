@@ -11,9 +11,9 @@ function Features() {
       description: 'Low gas fees on Ethereum L2'
     },
     {
-      icon: '💰',
+      icon: '🪵',
       title: 'Micro Price',
-      description: 'Only 0.00001 ETH per NFT'
+      description: 'Only 0.000001 ETH per NFT'
     },
     {
       icon: '🏆',
@@ -21,12 +21,12 @@ function Features() {
       description: 'Common to Legendary traits'
     },
     {
-      icon: '🔒',
+      icon: '🌳',
       title: 'Secure',
       description: 'Verified smart contract on Base'
     },
     {
-      icon: '🚀',
+      icon: '🔥',
       title: 'Fast',
       description: '2 second block times'
     }
