@@ -1812,3 +1812,12 @@ button:focus {
     0 0 30px rgba(218, 165, 32, 0.3),
     0 0 45px rgba(218, 165, 32, 0.2);
 }
+
+/* Forest Floor Background */
+.forest-floor {
+  background: linear-gradient(to bottom,
+      var(--bg-dark) 0%,
+      rgba(45, 30, 20, 0.95) 30%,
+      rgba(62, 31, 13, 0.9) 60%,
+      var(--wood-dark) 100%);
+}
