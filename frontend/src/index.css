@@ -1253,6 +1253,11 @@ td {
   background: var(--bg-card);
 }
 
+tr:hover td {
+  background: var(--primary-dark);
+  color: white;
+}
+
 .text-xl {
   font-size: 1.25rem;
 }
