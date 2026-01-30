@@ -587,7 +587,7 @@ body {
 
 .nft-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(139, 69, 19, 0.4);
+  box-shadow: 0 8px 30px rgba(62, 31, 13, 0.6);
 }
 
 .nft-placeholder {
