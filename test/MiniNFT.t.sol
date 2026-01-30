@@ -20,51 +20,51 @@ contract MiniNFTTest is Test {
     }
 
     function testInitialState() public view {
-        assertEq(nft.MAX_SUPPLY(), 505);
-        assertEq(nft.MINT_PRICE(), 0.00001 ether);
-        assertEq(nft.remainingSupply(), 505);
+        assertEq(nft.MAX_SUPPLY(), 1005);
+        assertEq(nft.MINT_PRICE(), 0.000001 ether);
+        assertEq(nft.remainingSupply(), 1005);
         assertEq(nft.totalSupply(), 0);
     }
 
     function testMint() public {
         vm.prank(user1);
-        nft.mint{value: 0.00001 ether}();
+        nft.mint{value: 0.000001 ether}();
 
         assertEq(nft.totalSupply(), 1);
-        assertEq(nft.remainingSupply(), 504);
+        assertEq(nft.remainingSupply(), 1004);
         assertEq(nft.balanceOf(user1), 1);
     }
 
     function testMintBatch() public {
         vm.prank(user1);
-        nft.mintBatch{value: 0.00005 ether}(5);
+        nft.mintBatch{value: 0.000005 ether}(5);
 
         assertEq(nft.totalSupply(), 5);
-        assertEq(nft.remainingSupply(), 500);
+        assertEq(nft.remainingSupply(), 1000);
         assertEq(nft.balanceOf(user1), 5);
     }
 
     function testMintInsufficientPayment() public {
         vm.prank(user1);
         vm.expectRevert("Insufficient payment");
-        nft.mint{value: 0.000009 ether}();
+        nft.mint{value: 0.0000009 ether}();
     }
 
     function testMintBatchMaxLimit() public {
         vm.prank(user1);
         vm.expectRevert("Max 10 NFTs per batch");
-        nft.mintBatch{value: 0.00011 ether}(11);
+        nft.mintBatch{value: 0.000011 ether}(11);
     }
 
     function testWithdraw() public {
         vm.prank(user1);
-        nft.mint{value: 0.00001 ether}();
+        nft.mint{value: 0.000001 ether}();
 
         uint256 balanceBefore = address(owner).balance;
         nft.withdraw();
         uint256 balanceAfter = address(owner).balance;
 
-        assertEq(balanceAfter - balanceBefore, 0.00001 ether);
+        assertEq(balanceAfter - balanceBefore, 0.000001 ether);
     }
 
     function testSetBaseURI() public {
@@ -74,7 +74,7 @@ contract MiniNFTTest is Test {
 
     function testOnlyOwnerCanWithdraw() public {
         vm.prank(user1);
-        nft.mint{value: 0.00001 ether}();
+        nft.mint{value: 0.000001 ether}();
 
         vm.prank(user1);
         vm.expectRevert();
