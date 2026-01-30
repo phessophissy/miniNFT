@@ -1707,3 +1707,36 @@ button:focus {
 .ring-growth {
   animation: ringGrowth 4s ease-in-out infinite;
 }
+
+/* Fireplace Flicker Animation */
+@keyframes fireplaceFlicker {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.3),
+      0 0 20px rgba(218, 165, 32, 0.2),
+      0 0 30px rgba(139, 69, 19, 0.1);
+  }
+
+  25% {
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.4),
+      0 0 25px rgba(218, 165, 32, 0.3),
+      0 0 35px rgba(139, 69, 19, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 8px rgba(255, 107, 53, 0.25),
+      0 0 18px rgba(218, 165, 32, 0.15),
+      0 0 28px rgba(139, 69, 19, 0.1);
+  }
+
+  75% {
+    box-shadow: 0 0 12px rgba(255, 107, 53, 0.35),
+      0 0 22px rgba(218, 165, 32, 0.25),
+      0 0 32px rgba(139, 69, 19, 0.15);
+  }
+}
+
+.fireplace-flicker {
+  animation: fireplaceFlicker 2s ease-in-out infinite;
+}
