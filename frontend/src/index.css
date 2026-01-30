@@ -644,7 +644,7 @@ body {
 
 /* Price value highlight */
 .price-value {
-  color: #a78bfa;
+  color: var(--accent);
   font-weight: 700;
 }
 
