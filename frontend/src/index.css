@@ -1079,7 +1079,7 @@ button:focus {
 input:focus,
 button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(123, 63, 228, 0.3);
+  box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.4);
 }
 
 ::-webkit-scrollbar {
