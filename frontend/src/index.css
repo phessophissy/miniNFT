@@ -327,7 +327,7 @@ body {
 
 .mint-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(123, 63, 228, 0.4);
+  box-shadow: 0 10px 30px rgba(139, 69, 19, 0.4);
 }
 
 .mint-btn:disabled {
