@@ -1640,3 +1640,70 @@ button:focus {
 .leaf-fall {
   animation: leafFall 8s linear infinite;
 }
+
+/* Grain Shift Animation */
+@keyframes grainShift {
+  0% {
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
+
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(1.05);
+  }
+
+  100% {
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
+}
+
+.grain-shift {
+  animation: grainShift 10s ease-in-out infinite;
+}
+
+/* Bark Texture Animation */
+@keyframes barkTexture {
+
+  0%,
+  100% {
+    background-size: 100% 100%;
+  }
+
+  50% {
+    background-size: 105% 105%;
+  }
+}
+
+.bark-texture {
+  background: repeating-linear-gradient(90deg,
+      var(--wood-dark) 0px,
+      var(--primary) 2px,
+      var(--wood-grain) 4px,
+      var(--primary) 6px,
+      var(--wood-dark) 8px);
+  animation: barkTexture 8s ease-in-out infinite;
+}
+
+/* Ring Growth Animation - Tree rings */
+@keyframes ringGrowth {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.ring-growth {
+  animation: ringGrowth 4s ease-in-out infinite;
+}
