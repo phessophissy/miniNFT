@@ -1104,8 +1104,8 @@ button:focus {
 }
 
 ::selection {
-  background: var(--primary);
-  color: white;
+  background: var(--accent);
+  color: var(--wood-dark);
 }
 
 .responsive-container {
