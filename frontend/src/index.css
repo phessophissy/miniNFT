@@ -183,7 +183,7 @@ body {
 
 .stat-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 40px rgba(123, 63, 228, 0.2);
+  box-shadow: 0 10px 40px rgba(139, 69, 19, 0.3);
 }
 
 .stat-value {
