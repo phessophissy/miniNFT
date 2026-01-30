@@ -1,14 +1,14 @@
-# 💎 MiniNFT
+# 🪵 MiniNFT
 
-A collection of 505 unique NFTs on Base Chain with micro-pricing.
+A collection of 1005 unique NFTs on Base Chain with micro-pricing and a warm wooden theme.
 
 ![MiniNFT Banner](https://img.shields.io/badge/Base-Chain-blue) ![License](https://img.shields.io/badge/License-MIT-green) ![NFTs](https://img.shields.io/badge/NFTs-505-purple)
 
 ## ✨ Features
 
-- **505 Unique NFTs** - Each NFT is uniquely generated
+- **1005 Unique NFTs** - Each NFT is uniquely generated
 - **Random Minting** - Get a random NFT from the collection
-- **Micro Price** - Only 0.00001 ETH per mint
+- **Micro Price** - Only 0.000001 ETH per mint
 - **Batch Minting** - Mint up to 10 NFTs at once
 - **5 Rarity Tiers** - Common, Uncommon, Rare, Epic, Legendary
 - **Base Chain** - Low gas fees on Ethereum L2
@@ -54,8 +54,8 @@ npm run dev
 |----------|-------|
 | Network | Base Mainnet |
 | Contract | `0x80203c0838a1cABe0eAbc0aC9e22f6Abd512cAa9` |
-| Max Supply | 505 |
-| Mint Price | 0.00001 ETH |
+| Max Supply | 1005 |
+| Mint Price | 0.000001 ETH |
 | Max per Batch | 10 |
 
 ## 🏗️ Architecture
