@@ -1,0 +1,17 @@
+{
+  "name": "mininft-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for MiniNFT wallet generation and contract interaction",
+  "main": "interactionScript.js",
+  "scripts": {
+    "generate": "node generateWallets.js",
+    "interact": "node interactionScript.js",
+    "info": "node interactionScript.js info",
+    "balances": "node interactionScript.js balances"
+  },
+  "dependencies": {
+    "ethers": "^6.9.0"
+  },
+  "author": "MiniNFT Team",
+  "license": "MIT"
+}
