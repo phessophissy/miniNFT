@@ -4,7 +4,7 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <span className="logo-icon">💎</span>
+        <span className="logo-icon">🪵</span>
         <span className="logo-text">MiniNFT</span>
       </div>
       <nav className="nav-links">
