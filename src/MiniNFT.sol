@@ -43,7 +43,7 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
 
     /**
      * @dev Mint a random NFT from the collection
-     * @notice Requires payment of 0.00001 ETH
+     * @notice Requires payment of 0.000001 ETH
      */
     function mint() external payable nonReentrant {
         require(_availableTokenIds.length > 0, "All NFTs have been minted");
