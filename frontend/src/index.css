@@ -1197,6 +1197,16 @@ button:focus {
   font-size: 0.875rem;
 }
 
+code {
+  font-family: 'Fira Code', monospace;
+  background: var(--bg-card);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--accent);
+  border: 1px solid var(--border-color);
+}
+
 .text-lg {
   font-size: 1.125rem;
 }
