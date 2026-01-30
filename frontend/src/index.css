@@ -1740,3 +1740,25 @@ button:focus {
 .fireplace-flicker {
   animation: fireplaceFlicker 2s ease-in-out infinite;
 }
+
+/* Smoke Rise Animation */
+@keyframes smokeRise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(-30px) scale(1.2);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(-60px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.smoke-rise {
+  animation: smokeRise 4s ease-out infinite;
+}
