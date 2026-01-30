@@ -96,11 +96,11 @@ miniNFT/
 
 | Tier | Probability | Count |
 |------|-------------|-------|
-| Common | 40% | ~202 |
-| Uncommon | 30% | ~152 |
-| Rare | 18% | ~91 |
-| Epic | 9% | ~45 |
-| Legendary | 3% | ~15 |
+| Common | 40% | ~402 |
+| Uncommon | 30% | ~302 |
+| Rare | 18% | ~181 |
+| Epic | 9% | ~90 |
+| Legendary | 3% | ~30 |
 
 ## 🔗 Links
 
