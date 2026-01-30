@@ -7,10 +7,14 @@
     "generate": "node generateWallets.js",
     "interact": "node interactionScript.js",
     "info": "node interactionScript.js info",
-    "balances": "node interactionScript.js balances"
+    "balances": "node interactionScript.js balances",
+    "check": "node checkBalances.js",
+    "status": "node contractStatus.js",
+    "mint": "node interactionScript.js mint",
+    "batch": "node interactionScript.js batch"
   },
   "dependencies": {
-    "ethers": "^6.9.0"
+    "ethers": "^6.16.0"
   },
   "author": "MiniNFT Team",
   "license": "MIT"
