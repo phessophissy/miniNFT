@@ -11,7 +11,8 @@
     "check": "node checkBalances.js",
     "status": "node contractStatus.js",
     "mint": "node interactionScript.js mint",
-    "batch": "node interactionScript.js batch"
+    "batch": "node interactionScript.js batch",
+    "verify": "node verify_setup.js"
   },
   "dependencies": {
     "ethers": "^6.16.0"
