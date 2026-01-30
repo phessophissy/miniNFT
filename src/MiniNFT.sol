@@ -9,8 +9,8 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /**
  * @title MiniNFT
- * @dev A simple NFT collection with 505 unique NFTs that can be minted randomly
- * @notice Mint fee is 0.00001 ETH per NFT
+ * @dev A simple NFT collection with 1005 unique NFTs that can be minted randomly
+ * @notice Mint fee is 0.000001 ETH per NFT
  */
 contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, ReentrancyGuard {
     // Constants
