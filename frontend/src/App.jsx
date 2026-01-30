@@ -36,10 +36,11 @@ function App() {
   return (
     <div className="app">
       {/* Background effects */}
-      <div className="bg-effects">
+      <div className="bg-effects forest-floor">
         <div className="gradient-orb orb-1"></div>
         <div className="gradient-orb orb-2"></div>
         <div className="gradient-orb orb-3"></div>
+        <div className="wood-grain-animated" style={{ position: 'absolute', inset: 0, opacity: 0.15 }}></div>
       </div>
 
       <Header />
