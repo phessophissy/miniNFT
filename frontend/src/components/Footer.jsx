@@ -5,26 +5,26 @@ function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-brand">
-          <span className="logo-icon">💎</span>
+          <span className="logo-icon">🪵</span>
           <span>MiniNFT</span>
         </div>
-        <p className="footer-tagline">505 unique NFTs on Base Chain</p>
+        <p className="footer-tagline">1005 unique NFTs on Base Chain</p>
         <div className="footer-links">
-          <a 
+          <a
             href={`https://basescan.org/address/${CONTRACT_ADDRESS}`}
             target="_blank"
             rel="noopener noreferrer"
           >
             📄 Contract
           </a>
-          <a 
+          <a
             href="https://opensea.io/collection/mininft"
             target="_blank"
             rel="noopener noreferrer"
           >
             🖼️ OpenSea
           </a>
-          <a 
+          <a
             href="https://github.com/phessophissy/miniNFT"
             target="_blank"
             rel="noopener noreferrer"
