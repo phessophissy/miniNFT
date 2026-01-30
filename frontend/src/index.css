@@ -550,9 +550,9 @@ body {
 .empty-gallery {
   text-align: center;
   padding: 3rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-card);
   border-radius: 16px;
-  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border: 1px dashed var(--wood-grain);
 }
 
 .empty-gallery p {
