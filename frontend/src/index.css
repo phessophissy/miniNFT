@@ -510,7 +510,7 @@ body {
 }
 
 .nav-links a:hover {
-  color: white;
+  color: var(--text-primary);
 }
 
 /* Stat icons */
