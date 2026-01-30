@@ -14,7 +14,7 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  */
 contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, ReentrancyGuard {
     // Constants
-    uint256 public constant MAX_SUPPLY = 505;
+    uint256 public constant MAX_SUPPLY = 1005;
     uint256 public constant MINT_PRICE = 0.00001 ether;
 
     // State variables
