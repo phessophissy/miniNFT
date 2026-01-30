@@ -84,4 +84,4 @@ export const CONTRACT_ADDRESS = '0x80203c0838a1cABe0eAbc0aC9e22f6Abd512cAa9';
 export const MINT_PRICE = '0.000001';
 
 // Max supply
-export const MAX_SUPPLY = 505;
+export const MAX_SUPPLY = 1005;
