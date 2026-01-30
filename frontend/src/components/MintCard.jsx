@@ -81,7 +81,7 @@ function MintCard({
           >
             {isPending ? '⏳ Confirm in Wallet...' :
               isConfirming ? '🔄 Minting...' :
-                `🎨 Mint ${mintQuantity} NFT${mintQuantity > 1 ? 's' : ''}`}
+                `🌳 Mint ${mintQuantity} NFT${mintQuantity > 1 ? 's' : ''}`}
           </button>
 
           {isSuccess && (
