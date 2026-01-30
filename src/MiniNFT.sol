@@ -35,7 +35,7 @@ contract MiniNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Reentra
     {
         baseTokenURI = _baseTokenURI;
 
-        // Initialize available token IDs (1 to 505)
+        // Initialize available token IDs (1 to 1005)
         for (uint256 i = 1; i <= MAX_SUPPLY; i++) {
             _availableTokenIds.push(i);
         }
