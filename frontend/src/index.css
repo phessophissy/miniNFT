@@ -288,7 +288,7 @@ body {
 
 .quantity-btn:hover:not(:disabled) {
   border-color: var(--primary);
-  background: rgba(123, 63, 228, 0.1);
+  background: rgba(139, 69, 19, 0.2);
 }
 
 .quantity-btn:disabled {
