@@ -669,7 +669,7 @@ body {
 }
 
 .glow-effect {
-  box-shadow: 0 0 20px rgba(123, 63, 228, 0.4);
+  box-shadow: 0 0 20px rgba(218, 165, 32, 0.4);
 }
 
 @keyframes pulse {
