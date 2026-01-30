@@ -18,7 +18,7 @@ function ProgressBar({ progress, minted, total }) {
       <div className="progress-text">
         {progress < 100
           ? `${(100 - progress).toFixed(1)}% remaining`
-          : '🎉 Sold Out!'}
+          : '🌳 Sold Out!'}
       </div>
     </div>
   );
