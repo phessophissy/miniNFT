@@ -2,7 +2,7 @@ function RecentMints({ mints }) {
   if (!mints || mints.length === 0) return null;
 
   return (
-    <div className="recent-mints">
+    <div className="recent-mints wood-panel">
       <h3>🪵 Your Recent Mints</h3>
       <div className="recent-list">
         {mints.map((mint, index) => (
